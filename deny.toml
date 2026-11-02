@@ -12,6 +12,9 @@ ignore = [
     "RUSTSEC-2026-0097",
     # https://rustsec.org/advisories/RUSTSEC-2026-0173 proc-macro-error2 is unmaintained, transitive dep via alloy-sol-macro
     "RUSTSEC-2026-0173",
+    # https://rustsec.org/advisories/RUSTSEC-2026-0387 crypto-bigint timing variability,
+    # patched in 0.7.6 but elliptic-curve 0.13 (k256 via alloy-signer) still requires 0.5.x
+    "RUSTSEC-2026-0387",
 ]
 
 # This section is considered when running `cargo deny check bans`.
@@ -77,10 +80,5 @@ license-files = [{ path = "LICENSE", hash = 0x001c7e6c }]
 unknown-registry = "warn"
 # Lint level for what to happen when a crate from a git repository that is not
 # in the allow list is encountered
-unknown-git = "deny"
-# Sources of the pinned account-extension workspace patches.
-allow-git = [
-    "https://github.com/alloy-rs/alloy",
-    "https://github.com/bluealloy/revm",
-]
+unknown-git = "allow"
 unused-allowed-source = "allow"
